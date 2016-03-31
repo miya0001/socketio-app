@@ -1,21 +1,20 @@
-var app = require('http').createServer(handler)
-var io = require('socket.io')(app);
-var fs = require('fs');
+// Setup basic express server
+var express = require('express');
+var app = express();
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+var port = process.env.PORT || 3000;
 
-app.listen(3000);
+server.listen(port, function () {
+  console.log('Server listening at port %d', port);
+});
 
-function handler (req, res) {
-  fs.readFile(__dirname + '/index.html',
-  function (err, data) {
-    if (err) {
-      res.writeHead(500);
-      return res.end('Error loading index.html');
-    }
+// Routing
+app.use(express.static(__dirname + '/public'));
 
-    res.writeHead(200);
-    res.end(data);
-  });
-}
+// Chatroom
+
+var numUsers = 0;
 
 io.on('connection', function (socket) {
   socket.emit('user', { name: 'John' });
