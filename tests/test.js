@@ -2,7 +2,7 @@ var should = require('should');
 var io     = require('socket.io-client');
 var server = require('../app');
 
-var socketURL = 'http://localhost';
+var socketURL = 'http://localhost:3000';
 
 var options ={
   transports: ['websocket'],
