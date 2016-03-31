@@ -2,20 +2,24 @@
   "name": "www",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "forever start index.js",
-    "stop": "forever stop index.js",
-    "restart": "forever restart index.js",
+    "start": "forever start app.js",
+    "stop": "forever stop app.js",
+    "restart": "forever restart app.js",
     "forever": "forever",
     "build": "echo \"Nothing to build\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha -R spec tests/"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.13.4",
     "forever": "^0.15.1",
+    "mongodb": "^2.1.12",
     "socket.io": "^1.4.5"
+  },
+  "devDependencies": {
+    "mocha": "^2.4.5",
+    "should": "^8.3.0"
   }
 }
