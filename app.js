@@ -18,5 +18,5 @@ function handler (req, res) {
 }
 
 io.on('connection', function (socket) {
-  socket.emit('test', { hello: 'world' });
+  socket.emit('user', { name: 'John' });
 });

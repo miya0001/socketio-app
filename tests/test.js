@@ -15,10 +15,12 @@ describe("Chat Server",function(){
   it('Should broadcast new user once they connect',function(done){
     var client = io.connect(socketURL, options);
 
-    client.on('test',function(data){
-      data.hello.should.equal("world");
-      client.disconnect();
-      done();
+    client.on('connect', function(){
+      client.on('user', function(data){
+        data.name.should.equal("John");
+        client.disconnect();
+        done();
+      });
     });
   });
 });
