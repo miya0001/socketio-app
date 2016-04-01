@@ -4,10 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "forever start app.js",
-    "stop": "forever stop app.js",
+    "start": "npm run pm2 start app.js",
+    "stop": "npm run pm2 stop app.js",
     "restart": "forever restart app.js",
-    "forever": "forever",
+    "pm2": "pm2",
     "build": "echo \"Nothing to build\"",
     "test": "mocha -R spec tests/"
   },
@@ -15,8 +15,8 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.4",
-    "forever": "^0.15.1",
     "mongodb": "^2.1.12",
+    "pm2": "^1.0.2",
     "socket.io": "^1.4.5"
   },
   "devDependencies": {
