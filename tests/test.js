@@ -10,15 +10,25 @@ var options ={
 };
 
 
-describe("Chat Server",function(){
+describe("Simple Chat",function(){
 
-  it('Should broadcast new user once they connect',function(done){
-    var client = io.connect(socketURL, options);
+  it('Should get username and message',function(done){
+    // Send a message
+    var client1 = io.connect(socketURL, options);
+    client1.on('connect', function(){
+      client1.emit('post', {
+        username: 'John',
+        message: 'Hello World'
+      });
+    });
 
-    client.on('connect', function(){
-      client.on('user', function(data){
-        data.name.should.equal("John");
-        client.disconnect();
+    // Get a message
+    var client2 = io.connect(socketURL, options);
+    client2.on('connect', function(){
+      client2.on('post', function(data){
+        data.username.should.equal("John");
+        data.message.should.equal("Hello World");
+        client2.disconnect();
         done();
       });
     });
