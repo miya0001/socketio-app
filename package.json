@@ -4,9 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "npm run pm2 start app.js",
-    "stop": "npm run pm2 stop app.js",
-    "restart": "forever restart app.js",
+    "start": "pm2 start app.js --watch",
+    "stop": "pm2 stop app.js",
+    "restart": "pm2 restart app.js",
     "pm2": "pm2",
     "build": "echo \"Nothing to build\"",
     "test": "mocha -R spec tests/"
