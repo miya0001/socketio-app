@@ -17,7 +17,9 @@ $ npm install
 $ npm start
 ```
 
-Stop:
+Then visit [http://localhost:3000/](http://localhost:3000/).
+
+### Stop:
 
 ```
 $ npm stop
