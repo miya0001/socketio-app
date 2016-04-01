@@ -13,10 +13,7 @@ server.listen(port, function () {
 app.use(express.static(__dirname + '/public'));
 
 io.on('connection', function (socket) {
-  socket.on('post', function (data) {
-    socket.broadcast.emit('post', {
-      username: data.username,
-      message: data.message
-    });
+  socket.on('push', function (data) {
+    socket.broadcast.emit('push', data);
   });
 });

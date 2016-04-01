@@ -9,14 +9,13 @@ var options ={
   'force new connection': true
 };
 
-
 describe("Simple Chat",function(){
 
   it('Should get username and message',function(done){
     // Send a message
     var client1 = io.connect(socketURL, options);
     client1.on('connect', function(){
-      client1.emit('post', {
+      client1.emit('push', {
         username: 'John',
         message: 'Hello World'
       });
@@ -25,9 +24,9 @@ describe("Simple Chat",function(){
     // Get a message
     var client2 = io.connect(socketURL, options);
     client2.on('connect', function(){
-      client2.on('post', function(data){
-        data.username.should.equal("John");
-        data.message.should.equal("Hello World");
+      client2.on('push', function(data){
+        data.should.have.property('username', 'John');
+        data.should.have.property('message', 'Hello World');
         client2.disconnect();
         done();
       });
