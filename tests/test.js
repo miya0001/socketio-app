@@ -4,7 +4,7 @@ var server = require('../app');
 
 describe("Simple Chat",function(){
 
-  it('Should get username and message',function(done){
+  it('Force disconnect',function(done){
     // Send a message
     var client1 = io.connect('http://localhost:3000', {
       transports: ['websocket'],
