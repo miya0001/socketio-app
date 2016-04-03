@@ -4,8 +4,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
 var redis = require('socket.io-redis');
-io.adapter(redis({ host: 'localhost', port: 6379 }));
-io.sockets.setMaxListeners(0);
+// io.adapter(redis({ host: 'localhost', port: 6379 }));
+// io.sockets.setMaxListeners(0);
 
 var port = process.env.PORT || 3000;
 server.listen(port);
